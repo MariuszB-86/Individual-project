@@ -1,0 +1,175 @@
+
+.splash{
+  height: 90vh;
+  background-image: url('../images/background.jpg');
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::after{
+    display: block;
+    content: '';
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    background: $background-color;
+    top: 50%;
+    background: linear-gradient(
+      to top,
+      $background-color 10%, transparent);
+  }
+
+  &__title{
+    color: $color-two;
+    z-index: 1;
+
+    h1{
+      font-size: 80px;
+      letter-spacing: 40px;
+      font-family: $font-one;
+    }
+
+    h4{
+      font-size: 25px;
+      text-align: center;
+      line-height: 1.5;
+      letter-spacing: 10px;
+      font-family: $font-three;
+    }
+  }
+}
+
+.main{
+  background-color: $background-color;
+
+  &__nav{
+    padding-top: 20px;
+  }
+
+  &__links{
+    display: flex;
+    justify-content: center;
+
+    li{
+      margin-right: 80px;
+
+      a{
+        color: $color-three;
+        text-decoration: none;
+        font-size: 24px;
+        font-family: $font-two;
+      }
+    }
+  }
+
+  &__songs{
+    height: 90vh;
+  }
+}
+
+.subscribe{
+  height: 70vh;
+  background-image: url('../images/subscribe.jpg');
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+
+  &__title{
+    font-size: 35px;
+    color: $color-two;
+    position: absolute;
+    top: -87px;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 7px;
+
+    h1{
+        font-family: $font-four;
+    }
+
+    .title-style{
+        font-family: $font-one;
+    }
+  }
+
+  &__img img{
+    width: 310px;
+    height: 390px;
+    position: absolute;
+    left: 755px;
+    top: 110px;
+  }
+
+  &__text{
+      color: $color-two;
+      font-size: 60px;
+      position: absolute;
+      top: 250px;
+      left: 620px;
+      line-height: 0.5;
+      font-family: $font-one;
+
+      .second-line{
+          text-indent: 35px;
+
+          &__color{
+              color: $color-one;
+          }
+      }
+  }
+
+  &__description{
+      position: absolute;
+      top: 520px;
+      left: 600px;
+      color: $color-two;
+      letter-spacing: 7px;
+      line-height: 0.7;
+
+      h5{
+          font-size: 24px;
+          margin: 0;
+          text-indent: 320px;
+          font-family: $font-two;
+      }
+
+      p{
+          font-size: 24px;
+          font-family: $font-four;
+      }
+  }
+
+  &__btn{
+      background: $color-one;
+      line-height: 90px;
+      position: absolute;
+      top: 350px;
+      left: 250px;
+      border-radius: 10px;
+
+      a{
+        padding: 35px 30px;
+        font-size: 30px;
+        color: white;
+        text-decoration: none;
+        letter-spacing: 7px;
+        font-family: $font-two;
+      }
+      
+  }
+}
+
+.footer{
+   text-align: center;
+   font-family: $font-four;
+   background: $background-color;
+   color: $color-three;
+   
+   p{
+       margin: 0;
+       padding: 20px 0;
+   }
+}
