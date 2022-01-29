@@ -1,4 +1,17 @@
+import Song from './home.js'; 
+
 const app = {
+  initSongs: function(){
+    const thisApp = this;
+
+    console.log(thisApp.data);
+
+    for(let song in thisApp.data.songs){
+      new Song(thisApp.data.songs[song].id, thisApp.data.songs[song]);
+    }
+
+  },
+
   initData: function(){
     const thisApp = this;
 
@@ -15,6 +28,9 @@ const app = {
         
 
         thisApp.data.songs = parsedResponse;
+        console.log('thisApp.data', thisApp.data.songs);
+
+        thisApp.initSongs();
       });
 
     
@@ -28,6 +44,7 @@ const app = {
     console.log('thisApp:', thisApp);
 
     thisApp.initData();
+    
   },
 };
 

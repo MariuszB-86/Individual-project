@@ -7,6 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -50,6 +51,28 @@
         <footer class="footer container">
             <p>All rights reserved</p>
         </footer>
+
+        <script id="template-songs" type="text/x-handlebars-template">
+          <div class="main__songs__wrapper">
+            <p class="author">{{author}}</p>
+            <p class="title">{{title}}</p>
+            <div class="player">
+              <audio>
+                <source src="vendor/songs/{{filename}}" type="audio/mpeg">
+              </audio>
+            </div>
+            <div class="categories">
+              <p>Categories:</p>
+              {{#each categories as |category categoryId|}}
+              <p>{{category}}</p>
+              {{/each}}
+            </div>
+            <p class="ranking">{{ranking}}</p>
+          </div>
+        </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
     <script src="js/app.js" type="module"></script>
     </body>
 </html>

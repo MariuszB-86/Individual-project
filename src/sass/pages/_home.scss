@@ -1,3 +1,4 @@
+/* Splash */
 
 .splash{
   height: 90vh;
@@ -42,6 +43,8 @@
   }
 }
 
+/* Main */
+
 .main{
   background-color: $background-color;
 
@@ -66,9 +69,12 @@
   }
 
   &__songs{
-    height: 90vh;
+    min-height: 90vh;
+    color: $color-two;
   }
 }
+
+/* Subscribe */
 
 .subscribe{
   height: 70vh;
@@ -161,6 +167,8 @@
       
   }
 }
+
+/* Footer */
 
 .footer{
    text-align: center;
