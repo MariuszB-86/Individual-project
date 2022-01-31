@@ -25,8 +25,30 @@
                     <li><a href="#discover">Discover</a></li>
                 </ul>
             </div>
-            <div class="main__songs">
-
+            <div id="pages">
+              <div id="home">
+                <div class="songs-wrapper"></div>
+              </div>
+              <div id="search">
+                <div class="search-wrapper">
+                  <div class="search-title">
+                    <h1>Search song!</h1>
+                  </div>
+                  <div class="search-form">
+                    <form>
+                      <legend>Search song!</legend>
+                      <input type="text">
+                      <div>
+                        <a class="btn-primary" href="#search-song">Search</a>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="songs-wrapper"></div>
+                </div>
+              </div>
+              <div id="discover">
+                 <div class="discover-wrapper"></div>
+              </div>
             </div>
             <section class="subscribe">
               <div class="subscribe__title">
@@ -53,24 +75,24 @@
         </footer>
 
         <script id="template-songs" type="text/x-handlebars-template">
-          <div class="main__songs__wrapper">
-            <p class="author">{{author}}</p>
-            <p class="title">{{title}}</p>
+          <div class="songs">
+            <p class="description"><span class="author">{{author}} </span><span class="title">- {{title}}</span></p>
             <div class="player">
               <audio>
                 <source src="vendor/songs/{{filename}}" type="audio/mpeg">
               </audio>
             </div>
             <div class="categories">
-              <p>Categories:</p>
+              <p>
+              Categories:
               {{#each categories as |category categoryId|}}
-              <p>{{category}}</p>
+              {{category}}
               {{/each}}
+            </p>
             </div>
-            <p class="ranking">{{ranking}}</p>
+            <p class="ranking">#{{ranking}} in the ranking</p>
           </div>
         </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
     <script src="js/app.js" type="module"></script>

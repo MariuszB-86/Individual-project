@@ -1,23 +1,23 @@
 *, *::before, *::after{
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 @font-face{
-    font-family: 'Source Sans Pro Black';
-    src:url('../vendor/SourceSansPro-Black.ttf');
+  font-family: 'Source Sans Pro Black';
+  src: url('../vendor/SourceSansPro-Black.ttf');
 }
 
 @font-face{
-    font-family: 'Source Sans Pro Bold';
-    src: url('../vendor/SourceSansPro-Bold.ttf');
+  font-family: 'Source Sans Pro Bold';
+  src: url('../vendor/SourceSansPro-Bold.ttf');
 }
 
 @font-face{
-    font-family: 'Source Sans Pro Regular';
-    src: url('../vendor/SourceSansPro-Regular.ttf');
+  font-family: 'Source Sans Pro Regular';
+  src: url('../vendor/SourceSansPro-Regular.ttf');
 }
 
 @font-face{
-    font-family: 'Source Sans Pro Semibold';
-    src: url('../vendor/SourceSansPro-SemiBold.ttf');
+  font-family: 'Source Sans Pro Semibold';
+  src: url('../vendor/SourceSansPro-SemiBold.ttf');
 }

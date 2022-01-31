@@ -1,4 +1,13 @@
 /* Splash */
+#pages {
+  > * {
+    display: none;
+  }
+  
+  > .active {
+    display: block;
+  }
+}
 
 .splash{
   height: 90vh;
@@ -58,6 +67,7 @@
 
     li{
       margin-right: 80px;
+      margin-left: 20px;
 
       a{
         color: $color-three;
@@ -65,12 +75,47 @@
         font-size: 24px;
         font-family: $font-two;
       }
+      .active{
+        color: $color-two;
+      }
     }
   }
 
-  &__songs{
+  .songs-wrapper{
     min-height: 90vh;
     color: $color-two;
+
+    .songs{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      margin: 70px 0;
+      font-family: $font-four;
+      letter-spacing: 1px;
+      
+
+      .description{
+        font-size: 24px;
+      }
+
+      .categories{
+        position: absolute;
+        display: flex;
+        top: 140px;
+        left: 460px;
+        color: $color-three;
+        font-size: 14px;
+      }
+
+      .ranking{
+        position: absolute;
+        top: 140px;
+        left: 720px;
+        color: $color-three;
+        font-size: 14px;
+      }
+    }
   }
 }
 
@@ -93,11 +138,11 @@
     letter-spacing: 7px;
 
     h1{
-        font-family: $font-four;
+      font-family: $font-four;
     }
 
     .title-style{
-        font-family: $font-one;
+      font-family: $font-one;
     }
   }
 
@@ -105,65 +150,65 @@
     width: 310px;
     height: 390px;
     position: absolute;
-    left: 755px;
+    left: 58.5%;
     top: 110px;
   }
 
   &__text{
-      color: $color-two;
-      font-size: 60px;
-      position: absolute;
-      top: 250px;
-      left: 620px;
-      line-height: 0.5;
-      font-family: $font-one;
+    color: $color-two;
+    font-size: 60px;
+    position: absolute;
+    top: 250px;
+    left: 620px;
+    line-height: 0.5;
+    font-family: $font-one;
 
-      .second-line{
-          text-indent: 35px;
+    .second-line{
+      text-indent: 35px;
 
-          &__color{
-              color: $color-one;
-          }
+      &__color{
+        color: $color-one;
       }
+    }
   }
 
   &__description{
-      position: absolute;
-      top: 520px;
-      left: 600px;
-      color: $color-two;
-      letter-spacing: 7px;
-      line-height: 0.7;
+    position: absolute;
+    top: 520px;
+    left: 600px;
+    color: $color-two;
+    letter-spacing: 7px;
+    line-height: 0.7;
 
-      h5{
-          font-size: 24px;
-          margin: 0;
-          text-indent: 320px;
-          font-family: $font-two;
-      }
+    h5{
+      font-size: 24px;
+      margin: 0;
+      text-indent: 320px;
+      font-family: $font-two;
+    }
 
-      p{
-          font-size: 24px;
-          font-family: $font-four;
-      }
+    p{
+      font-size: 24px;
+      font-family: $font-four;
+    }
   }
 
   &__btn{
-      background: $color-one;
-      line-height: 90px;
-      position: absolute;
-      top: 350px;
-      left: 250px;
-      border-radius: 10px;
+    background: $color-one;
+    line-height: 90px;
+    position: absolute;
+    top: 350px;
+    left: 250px;
+    border-radius: 10px;
 
-      a{
-        padding: 35px 30px;
-        font-size: 30px;
-        color: white;
-        text-decoration: none;
-        letter-spacing: 7px;
-        font-family: $font-two;
-      }
+    a{
+      padding: 35px 30px;
+      font-size: 30px;
+      color: white;
+      text-decoration: none;
+      letter-spacing: 7px;
+      font-family: $font-two;
+    }
       
   }
 }
@@ -171,13 +216,13 @@
 /* Footer */
 
 .footer{
-   text-align: center;
-   font-family: $font-four;
-   background: $background-color;
-   color: $color-three;
+  text-align: center;
+  font-family: $font-four;
+  background: $background-color;
+  color: $color-three;
    
-   p{
-       margin: 0;
-       padding: 20px 0;
-   }
+  p{
+    margin: 0;
+    padding: 20px 0;
+  }
 }
