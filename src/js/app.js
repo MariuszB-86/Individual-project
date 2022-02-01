@@ -1,14 +1,37 @@
 import Search from './Search.js';
 import Song from './Songs.js'; 
 import Discover from './Discover.js'; 
+import RenderText from './RenderText.js'; 
 
 const app = {
+  initRenderText: function(){
+    const thisApp = this;
+
+    thisApp.splashTitle = document.querySelector('.splash__title');
+    thisApp.textLinks = document.querySelectorAll('.main__links li a');
+    thisApp.subscribeTitle = document.querySelector('.subscribe__header__title');
+    thisApp.subscribeTitleSecond = document.querySelector('.title-style');
+    thisApp.descriptionTitle = document.querySelector('.subscribe__description__title');
+    thisApp.subscribeButton = document.querySelector('.btn-secondary');
+
+    new RenderText(thisApp.splashTitle);
+
+    for(let link of thisApp.textLinks){
+      new RenderText(link);
+    }
+
+    new RenderText(thisApp.subscribeTitle);
+    new RenderText(thisApp.subscribeTitleSecond);
+    new RenderText(thisApp.descriptionTitle);
+    new RenderText(thisApp.subscribeButton);
+  },
+
   initDiscover: function(){
     const thisApp = this;
 
     new Discover(thisApp.data);
   },
-  
+
   initSearch: function(){
     const thisApp = this;
 
@@ -104,6 +127,7 @@ const app = {
     thisApp.initPages();
     thisApp.initSearch();
     thisApp.initDiscover();
+    thisApp.initRenderText();
   },
 };
 

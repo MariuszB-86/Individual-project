@@ -5,7 +5,7 @@ class Discover{
     const thisDiscover = this;
 
     thisDiscover.data = data;
-    console.log('data' ,thisDiscover.data);
+    // console.log('data' ,thisDiscover.data);
 
     thisDiscover.wrapper = document.querySelector('#discover');
     thisDiscover.songwrapper = thisDiscover.wrapper.querySelector('.songs-wrapper');
@@ -17,25 +17,22 @@ class Discover{
     const thisDiscover = this;
 
     thisDiscover.link = document.querySelector('[href = "#discover"]');
-    console.log(thisDiscover.link);
+    // console.log(thisDiscover.link);
 
     thisDiscover.link.addEventListener('click', function(){
-      console.log('losujemy piosenkę');
-
       for(let item in thisDiscover.data){
         const songsArray = thisDiscover.data[item];
-        console.log('tablica' ,songsArray.length);
+        // console.log('tablica' ,songsArray.length);
 
         const randomId = Math.round(Math.random() * (songsArray.length - 1) + 1);
 
-        console.log('wylosowana liczba' ,randomId);
+        // console.log('wylosowana liczba' ,randomId);
 
         for(let item of songsArray){
           const songId = item.id;
-          console.log('song id', songId);
 
           if(songId === randomId){
-            console.log('piosenka nr', randomId);
+            // console.log('piosenka nr', randomId);
             thisDiscover.songwrapper.innerHTML = '';
 
             const randomSong = songsArray[songsArray.indexOf(item)];

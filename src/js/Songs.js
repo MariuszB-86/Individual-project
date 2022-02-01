@@ -5,7 +5,7 @@ class Song{
     const thisSong = this;
 
     // console.log('id', id);
-    // console.log('data', data);
+    console.log('data', data);
 
     thisSong.id = id;
     thisSong.data = data;
@@ -28,7 +28,11 @@ class Song{
     // console.log('container', thisSong.container);
 
     thisSong.element = utils.createDOMFromHTML(generatedHTML);
-    // console.log('song.element', thisSong.element);
+    console.log('song.element', thisSong.element);
+
+    const categoriesContainer = thisSong.element.querySelector('.category');
+    console.log('categories' ,categoriesContainer);
+    categoriesContainer.innerHTML = thisSong.prepareCategory();
 
     thisSong.container.appendChild(thisSong.element);
   }
@@ -43,6 +47,25 @@ class Song{
 
     // eslint-disable-next-line no-undef
     new GreenAudioPlayer(player);
+  }
+
+  prepareCategory(){
+    const thisSong = this;
+
+    const arrayLength = thisSong.data.categories.length;
+    console.log(arrayLength);
+
+    const lastItem = thisSong.data.categories[arrayLength -1].toLowerCase();
+    console.log(lastItem);
+
+    thisSong.data.categories.splice(arrayLength - 1, 1, lastItem);
+    
+    console.log(thisSong.data.categories);
+
+    const textFromArray = thisSong.data.categories.join(', ');
+    console.log(textFromArray);
+
+    return textFromArray;
   }
 }
 

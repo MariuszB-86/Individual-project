@@ -51,22 +51,22 @@
               </div>
             </div>
             <section class="subscribe">
-              <div class="subscribe__title">
-                  <h1>SUBSCRIBE <span class="title-style">NOW</span></h1>
+              <div class="subscribe__header">
+                  <h1><span class="subscribe__header__title">Subscribe </span><span class="title-style">now</span></h1>
               </div>
               <div class="subscribe__img">
-                  <img src="images/artist.jpg" alt="Photo of artist" >
+                  <img src="images/artist.jpg" alt="Photo_of_artist" >
               </div>
               <div class="subscribe__text">
                 <p class="first-line">Dean</p>
                 <p class="second-line">Hen<span class="second-line__color">son</span></p>
               </div>
               <div class="subscribe__description">
-                <h5>New album</h5>
+                <h5 class="subscribe__description__title">New album</h5>
                 <p>Avaliable only  for subscribers</p>
               </div>
               <div class="subscribe__btn">
-                <a href="#join-now">Join now</a>
+                <a class="btn-secondary" href="#join-now">Join now</a>
               </div>
             </section>
         </section>
@@ -83,12 +83,7 @@
               </audio>
             </div>
             <div class="categories">
-              <p>
-              Categories:
-              {{#each categories as |category categoryId|}}
-              {{category}}
-              {{/each}}
-            </p>
+              <p>Categories: <span class="category"></span></p>
             </div>
             <p class="ranking">#{{ranking}} in the ranking</p>
           </div>
