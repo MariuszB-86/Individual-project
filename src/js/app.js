@@ -1,7 +1,14 @@
 import Search from './Search.js';
 import Song from './Songs.js'; 
+import Discover from './Discover.js'; 
 
 const app = {
+  initDiscover: function(){
+    const thisApp = this;
+
+    new Discover(thisApp.data);
+  },
+  
   initSearch: function(){
     const thisApp = this;
 
@@ -96,6 +103,7 @@ const app = {
     thisApp.initData();
     thisApp.initPages();
     thisApp.initSearch();
+    thisApp.initDiscover();
   },
 };
 
