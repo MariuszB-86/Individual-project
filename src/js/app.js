@@ -7,23 +7,30 @@ const app = {
   initRenderText: function(){
     const thisApp = this;
 
-    thisApp.splashTitle = document.querySelector('.splash__title');
+    thisApp.dom = {};
+
+    thisApp.dom.splashTitle = document.querySelector('.splash__title');
     thisApp.textLinks = document.querySelectorAll('.main__links li a');
-    thisApp.subscribeTitle = document.querySelector('.subscribe__header__title');
-    thisApp.subscribeTitleSecond = document.querySelector('.title-style');
-    thisApp.descriptionTitle = document.querySelector('.subscribe__description__title');
-    thisApp.subscribeButton = document.querySelector('.btn-secondary');
+    thisApp.dom.textLinks = Array.from(thisApp.textLinks);
+    thisApp.dom.subscribeTitle = document.querySelector('.subscribe__header__title');
+    thisApp.dom.subscribeTitleSecond = document.querySelector('.title-style');
+    thisApp.dom.descriptionTitle = document.querySelector('.subscribe__description__title');
+    thisApp.dom.subscribeButton = document.querySelector('.btn-secondary');
+    thisApp.dom.searchTitle = document.querySelector('.search-title');
+    thisApp.dom.searchButton = document.querySelector('.btn-primary');
+    thisApp.dom.discoverTitle = document.querySelector('.discover-title');
 
-    new RenderText(thisApp.splashTitle);
+    for(let item in thisApp.dom){
+      const renderDom = thisApp.dom[item];
 
-    for(let link of thisApp.textLinks){
-      new RenderText(link);
-    }
-
-    new RenderText(thisApp.subscribeTitle);
-    new RenderText(thisApp.subscribeTitleSecond);
-    new RenderText(thisApp.descriptionTitle);
-    new RenderText(thisApp.subscribeButton);
+      if(Array.isArray(renderDom)){
+        for(let link of renderDom){
+          new RenderText(link);
+        }
+      }else{
+        new RenderText(renderDom);
+      }
+    }  
   },
 
   initDiscover: function(){
@@ -44,6 +51,7 @@ const app = {
 
     thisApp.pages = document.querySelector('#pages').children;
     thisApp.navLinks = document.querySelectorAll('.main__links a');
+    thisApp.subscribeSection = document.querySelector('.subscribe');
 
     // console.log('thisApp.pages', thisApp.pages);
     // console.log('thisApp.navLinks', thisApp.navLinks);
@@ -62,11 +70,17 @@ const app = {
         // console.log('clickedElement', clickedElement);
 
         const id = clickedElement.getAttribute('href').replace('#', '');
-        // console.log('id', id);
+        console.log('id', id);
 
         thisApp.activePage(id);
 
         window.location.hash = '#/' + id;
+
+        if(id === 'home'){
+          thisApp.subscribeSection.classList.add('active');
+        }else{
+          thisApp.subscribeSection.classList.remove('active');
+        }
       });
     }
   },
@@ -89,6 +103,7 @@ const app = {
     // console.log(thisApp.data);
 
     const wrapper = document.querySelector('#home');
+
 
     for(let song in thisApp.data.songs){
       // console.log(thisApp.data.songs[song]);

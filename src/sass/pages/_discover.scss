@@ -1,5 +1,28 @@
-.discover-wrapper{
-  min-height: 90vh;
-  color: $color-two;
-  background-color: $background-color;
+// .discover-wrapper{
+//   min-height: 90vh;
+//   color: $color-two;
+//   background-color: $background-color;
+// }
+
+// .
+
+.discover-header{
+  text-align: center;
+  margin-top: 50px;
+  font-family: $font-two;
+  letter-spacing: 7px;
+
+  .discover-title{
+    font-size: 50px;
+    
+    
+    color: $color-three;
+  }
+
+  .discover-subtitle{
+    font-size: 20px;
+    color: $color-two;
+    margin-top: 50px;
+  }
 }
+

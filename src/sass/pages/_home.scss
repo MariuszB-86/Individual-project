@@ -35,11 +35,15 @@
   &__title{
     color: $color-two;
     z-index: 1;
+    
 
     h1{
-      font-size: 80px;
-      letter-spacing: 40px;
+      font-size: 130px;
+      letter-spacing: 80px;
       font-family: $font-one;
+      left: 23%;
+      top: 24%;
+      position: absolute;
     }
 
     h4{
@@ -48,6 +52,9 @@
       line-height: 1.5;
       letter-spacing: 10px;
       font-family: $font-three;
+      position: absolute;
+      top: 49%;
+      left: 44%;
     }
   }
 }
@@ -83,36 +90,50 @@
   }
 
   .songs-wrapper{
-    min-height: 90vh;
+    min-height: 300px;
     color: $color-two;
+    margin-top: 50px;
 
     .songs{
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
-      margin: 70px 0;
+      padding-bottom: 100px;
       font-family: $font-four;
       letter-spacing: 1px;
-      
 
-      .description{
+      &:last-child{
+        padding-bottom: 150px;
+      }
+
+      .song-title{
         font-size: 24px;
       }
 
-      .categories{
-        position: absolute;
+      .description{
         display: flex;
-        top: 140px;
-        left: 460px;
+      }
+
+      .player{
+        position: relative;
+      }
+      .pin{
+        background-color: $color-one;
+      }
+
+      .categories{
+        display: flex;
         color: $color-three;
         font-size: 14px;
+        position: absolute;
+        top: 120%;
+        left: 0%;
       }
 
       .ranking{
         position: absolute;
-        top: 140px;
-        left: 720px;
+        top: 120%;
+        left: 65%;
         color: $color-three;
         font-size: 14px;
       }
@@ -128,6 +149,7 @@
   background-position: center center;
   background-size: cover;
   position: relative;
+  display: none;
 
   &__header{
     font-size: 35px;
@@ -212,6 +234,10 @@
     }
       
   }
+}
+
+.active{
+  display: block;
 }
 
 /* Footer */

@@ -32,60 +32,68 @@
               <div id="search">
                 <div class="search-wrapper">
                   <div class="search-title">
-                    <h1>Search song!</h1>
+                    <h1>Search</h1>
                   </div>
                   <div class="search-form">
                     <form>
-                      <input type="text">
+                      <label class="search-input-name">Name<input class="search-input" type="text"></label>
                       <button class="btn-primary" type="submit">Search</button>
-                      <!-- <div>
-                        <a class="btn-primary" href="#search-song">Search</a>
-                      </div> -->
                     </form>
+                  </div>
+                  <div>
+                    <p class="search-text">We have found <span class="search-count"></span> songs...</p>
                   </div>
                   <div class="songs-wrapper"></div>
                 </div>
               </div>
               <div id="discover">
+                <div class="discover-header">
+                  <h1 class="discover-title">Discover</h1>
+                  <h4 class="discover-subtitle">Give it a try!</h4>
+                </div>
                  <div class="songs-wrapper"></div>
               </div>
             </div>
-            <section class="subscribe">
-              <div class="subscribe__header">
-                  <h1><span class="subscribe__header__title">Subscribe </span><span class="title-style">now</span></h1>
-              </div>
-              <div class="subscribe__img">
-                  <img src="images/artist.jpg" alt="Photo_of_artist" >
-              </div>
-              <div class="subscribe__text">
-                <p class="first-line">Dean</p>
-                <p class="second-line">Hen<span class="second-line__color">son</span></p>
-              </div>
-              <div class="subscribe__description">
-                <h5 class="subscribe__description__title">New album</h5>
-                <p>Avaliable only  for subscribers</p>
-              </div>
-              <div class="subscribe__btn">
-                <a class="btn-secondary" href="#join-now">Join now</a>
-              </div>
-            </section>
         </section>
+        <section class="subscribe-wrapper container">
+          <div class="subscribe active">
+            <div class="subscribe__header">
+              <h1><span class="subscribe__header__title">Subscribe </span><span class="title-style">now</span></h1>
+          </div>
+          <div class="subscribe__img">
+              <img src="images/artist.jpg" alt="Photo_of_artist" >
+          </div>
+          <div class="subscribe__text">
+            <p class="first-line">Dean</p>
+            <p class="second-line">Hen<span class="second-line__color">son</span></p>
+          </div>
+          <div class="subscribe__description">
+            <h5 class="subscribe__description__title">New album</h5>
+            <p>Avaliable only  for subscribers</p>
+          </div>
+          <div class="subscribe__btn">
+            <a class="btn-secondary" href="#join-now">Join now</a>
+          </div>
+          </div>
+        </section>    
         <footer class="footer container">
             <p>All rights reserved</p>
         </footer>
 
         <script id="template-songs" type="text/x-handlebars-template">
           <div class="songs">
-            <p class="description"><span class="author">{{author}} </span><span class="title">- {{title}}</span></p>
+            <p class="song-title"><span class="author">{{author}} </span><span class="title">- {{title}}</span></p>
             <div class="player">
               <audio>
                 <source src="vendor/songs/{{filename}}" type="audio/mpeg">
               </audio>
+              <div class="description">
+                <div class="categories">
+                  <p>Categories: <span class="category"></span></p>
+                </div>
+                <p class="ranking">#{{ranking}} in the ranking</p>
+              </div>
             </div>
-            <div class="categories">
-              <p>Categories: <span class="category"></span></p>
-            </div>
-            <p class="ranking">#{{ranking}} in the ranking</p>
           </div>
         </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>

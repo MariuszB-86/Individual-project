@@ -1,11 +1,12 @@
 import { utils } from './utils.js'; 
+import RenderText from './RenderText.js';
 
 class Song{
   constructor(id, data, wrapper){
     const thisSong = this;
 
     // console.log('id', id);
-    console.log('data', data);
+    // console.log('data', data);
 
     thisSong.id = id;
     thisSong.data = data;
@@ -15,6 +16,7 @@ class Song{
 
     thisSong.renderPage();
     thisSong.initPlayer();
+    thisSong.prepareAuthor();
   }
 
   renderPage(){
@@ -28,10 +30,10 @@ class Song{
     // console.log('container', thisSong.container);
 
     thisSong.element = utils.createDOMFromHTML(generatedHTML);
-    console.log('song.element', thisSong.element);
+    // console.log('song.element', thisSong.element);
 
     const categoriesContainer = thisSong.element.querySelector('.category');
-    console.log('categories' ,categoriesContainer);
+    // console.log('categories' ,categoriesContainer);
     categoriesContainer.innerHTML = thisSong.prepareCategory();
 
     thisSong.container.appendChild(thisSong.element);
@@ -53,19 +55,27 @@ class Song{
     const thisSong = this;
 
     const arrayLength = thisSong.data.categories.length;
-    console.log(arrayLength);
+    // console.log(arrayLength);
 
     const lastItem = thisSong.data.categories[arrayLength -1].toLowerCase();
-    console.log(lastItem);
+    // console.log(lastItem);
 
     thisSong.data.categories.splice(arrayLength - 1, 1, lastItem);
     
-    console.log(thisSong.data.categories);
+    // console.log(thisSong.data.categories);
 
     const textFromArray = thisSong.data.categories.join(', ');
-    console.log(textFromArray);
+    // console.log(textFromArray);
 
     return textFromArray;
+  }
+
+  prepareAuthor(){
+    const thisSong = this;
+
+    const author = thisSong.element.querySelector('.author');
+
+    new RenderText(author);
   }
 }
 
