@@ -2,8 +2,23 @@ import Search from './Search.js';
 import Song from './Songs.js'; 
 import Discover from './Discover.js'; 
 import RenderText from './RenderText.js'; 
+import FilterCategory from './FilterCategory.js'; 
 
 const app = {
+  initFilterCategory: function(){
+    const thisApp = this;
+    console.log(thisApp.data);
+
+
+    
+    
+
+
+    new FilterCategory(thisApp.data);
+
+    console.log('FilterCategory.data', thisApp.data);
+  },
+
   initRenderText: function(){
     const thisApp = this;
 
@@ -35,6 +50,7 @@ const app = {
 
   initDiscover: function(){
     const thisApp = this;
+    
 
     new Discover(thisApp.data);
   },
@@ -48,6 +64,7 @@ const app = {
 
   initPages: function(){
     const thisApp = this;
+    
 
     thisApp.pages = document.querySelector('#pages').children;
     thisApp.navLinks = document.querySelectorAll('.main__links a');
@@ -99,7 +116,7 @@ const app = {
 
   initSongs: function(){
     const thisApp = this;
-
+    
     // console.log(thisApp.data);
 
     const wrapper = document.querySelector('#home');
@@ -113,6 +130,7 @@ const app = {
 
   initData: function(){
     const thisApp = this;
+    
 
     thisApp.data = {};
 
@@ -127,8 +145,11 @@ const app = {
       
         thisApp.data.songs = parsedResponse;
         // console.log('thisApp.data.songs', thisApp.data.songs);
-
+        
+        thisApp.initFilterCategory();
         thisApp.initSongs();
+        
+        
       });
   },
 
@@ -138,11 +159,15 @@ const app = {
     // console.log('*** App starting ***');
     // console.log('thisApp:', thisApp);
 
+    
     thisApp.initData();
     thisApp.initPages();
     thisApp.initSearch();
     thisApp.initDiscover();
     thisApp.initRenderText();
+    
+    
+    
   },
 };
 

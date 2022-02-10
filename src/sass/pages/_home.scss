@@ -36,7 +36,6 @@
     color: $color-two;
     z-index: 1;
     
-
     h1{
       font-size: 130px;
       letter-spacing: 80px;
@@ -117,6 +116,7 @@
       .player{
         position: relative;
       }
+
       .pin{
         background-color: $color-one;
       }
@@ -170,7 +170,7 @@
   }
 
   &__img img{
-    width: 310px;
+    max-width: 50%;
     height: 390px;
     position: absolute;
     left: 58.5%;
@@ -251,5 +251,138 @@
   p{
     margin: 0;
     padding: 20px 0;
+  }
+}
+
+/* Filter */
+
+.filter-category{
+  color: white;
+}
+
+@media (min-width: 641px) and (max-width: 1280px){
+  .splash{
+    h1{
+      font-size: 15vw;
+      letter-spacing: 6vw;
+      top: 18vh;
+      left: 18vw;
+    }
+
+    h4{
+      left: 43vw;
+      top: 55vh;
+      font-size: 2.5vw;
+    }
+  }
+
+  .subscribe__img img{
+    height: 30vh;
+  }
+
+  .subscribe__text{
+    top: 10%;
+    left: 15%;
+  }
+
+  .subscribe__description{
+    top: 40vh;
+    left: 20vw;
+    letter-spacing: 0.5vw;
+    font-size: 5vW;
+
+    h5{
+      text-indent: 0;
+    }
+
+    p{
+      line-height: 1;
+    }
+  }
+
+  .subscribe__btn{
+    top: 55vh;
+    left: 20vw;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 640px) {
+  .splash {
+    background-position: 48% 50%;
+    
+    h1{
+      font-size: 20vw;
+      letter-spacing: 6vw;
+      top: 25vh;
+      left: 10vw;
+    }
+
+    h4{
+      left: 39vw;
+      top: 45vh;
+      font-size: 4vw;
+    }
+  }
+
+  .main__links{
+    display: block;
+    text-align: center;
+
+    li{
+      padding-bottom: 10px;
+    }
+  }
+
+  .main {
+    .songs-wrapper{
+      .songs{
+        .song-title{
+          font-size: 20px;
+        }
+
+        .green-audio-player{
+          width: 350px;
+        }
+      }
+    }
+  }
+  
+  .subscribe__header{
+    font-size: 24px;
+
+    .title-style{
+      position: absolute;
+      left: 30%;
+      top: 63%;
+    }
+  }
+
+  .subscribe__img img{
+    height: 20vh;
+  }
+
+  .subscribe__text{
+    top: 10%;
+    left: 15%;
+  }
+
+  .subscribe__description{
+    top: 40vh;
+    left: 20vw;
+    letter-spacing: 0.5vw;
+    font-size: 5vW;
+
+    h5{
+      text-indent: 0;
+    }
+
+    p{
+      line-height: 1;
+    }
+  }
+
+  .subscribe__btn{
+    top: 55vh;
+    left: 20vw;
   }
 }

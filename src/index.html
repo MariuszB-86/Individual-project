@@ -25,6 +25,10 @@
                     <li><a href="#discover">Discover</a></li>
                 </ul>
             </div>
+            <div class="categories-wrapper">
+              <p>Categories: </p>
+              <div class="categories-list"></div>
+            </div>
             <div id="pages">
               <div id="home">
                 <div class="songs-wrapper"></div>
@@ -75,10 +79,18 @@
             <a class="btn-secondary" href="#join-now">Join now</a>
           </div>
           </div>
-        </section>    
+        </section>
         <footer class="footer container">
             <p>All rights reserved</p>
         </footer>
+
+        <script id="template-categories" type="text/x-handlebars-template">
+          <ul class="categories-links">
+            {{#each this}}
+            <li><a href="#{{this}}">{{this}}</a></li>
+            {{/each}}
+          </ul>
+        </script>
 
         <script id="template-songs" type="text/x-handlebars-template">
           <div class="songs">
