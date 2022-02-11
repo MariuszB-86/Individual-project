@@ -1,5 +1,6 @@
 import { utils } from './utils.js'; 
 import RenderText from './RenderText.js';
+import {select, templates} from './settings.js';
 
 class Song{
   constructor(id, data, wrapper){
@@ -23,16 +24,16 @@ class Song{
     const thisSong = this;
     // console.log(thisSong.data);
     
-    const generatedHTML = Handlebars.compile(document.querySelector('#template-songs').innerHTML)(thisSong.data);
+    const generatedHTML = templates.songs(thisSong.data);
     // console.log(generatedHTML);
     
-    thisSong.container = thisSong.wrapper.querySelector('.songs-wrapper');
+    thisSong.container = thisSong.wrapper.querySelector(select.containerOf.songs);
     // console.log('container', thisSong.container);
 
     thisSong.element = utils.createDOMFromHTML(generatedHTML);
     // console.log('song.element', thisSong.element);
 
-    const categoriesContainer = thisSong.element.querySelector('.category');
+    const categoriesContainer = thisSong.element.querySelector(select.containerOf.category);
     // console.log('categories' ,categoriesContainer);
     categoriesContainer.innerHTML = thisSong.prepareCategory();
 
@@ -44,7 +45,7 @@ class Song{
 
     // console.log('player', thisSong.element);
 
-    const player = thisSong.element.querySelector('.player');
+    const player = thisSong.element.querySelector(select.player);
     // console.log('player',player);
 
     // eslint-disable-next-line no-undef
@@ -73,7 +74,7 @@ class Song{
   prepareAuthor(){
     const thisSong = this;
 
-    const author = thisSong.element.querySelector('.author');
+    const author = thisSong.element.querySelector(select.songAuthor);
 
     new RenderText(author);
   }

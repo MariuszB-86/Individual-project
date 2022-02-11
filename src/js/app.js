@@ -3,20 +3,14 @@ import Song from './Songs.js';
 import Discover from './Discover.js'; 
 import RenderText from './RenderText.js'; 
 import FilterCategory from './FilterCategory.js'; 
+import {classNames, select} from './settings.js';
 
 const app = {
   initFilterCategory: function(){
     const thisApp = this;
-    console.log(thisApp.data);
-
-
-    
-    
-
+    // console.log(thisApp.data);
 
     new FilterCategory(thisApp.data);
-
-    console.log('FilterCategory.data', thisApp.data);
   },
 
   initRenderText: function(){
@@ -24,16 +18,16 @@ const app = {
 
     thisApp.dom = {};
 
-    thisApp.dom.splashTitle = document.querySelector('.splash__title');
-    thisApp.textLinks = document.querySelectorAll('.main__links li a');
+    thisApp.dom.splashTitle = document.querySelector(select.element.splashTitle);
+    thisApp.textLinks = document.querySelectorAll(select.element.textLinks);
     thisApp.dom.textLinks = Array.from(thisApp.textLinks);
-    thisApp.dom.subscribeTitle = document.querySelector('.subscribe__header__title');
-    thisApp.dom.subscribeTitleSecond = document.querySelector('.title-style');
-    thisApp.dom.descriptionTitle = document.querySelector('.subscribe__description__title');
-    thisApp.dom.subscribeButton = document.querySelector('.btn-secondary');
-    thisApp.dom.searchTitle = document.querySelector('.search-title');
-    thisApp.dom.searchButton = document.querySelector('.btn-primary');
-    thisApp.dom.discoverTitle = document.querySelector('.discover-title');
+    thisApp.dom.subscribeTitle = document.querySelector(select.element.subscribeTitle);
+    thisApp.dom.subscribeTitleSecond = document.querySelector(select.element.subscribeTitleSecond);
+    thisApp.dom.descriptionTitle = document.querySelector(select.element.descriptionTitle);
+    thisApp.dom.subscribeButton = document.querySelector(select.element.subscribeButton);
+    thisApp.dom.searchTitle = document.querySelector(select.element.searchTitle);
+    thisApp.dom.searchButton = document.querySelector(select.element.searchButton);
+    thisApp.dom.discoverTitle = document.querySelector(select.element.discoverTitle);
 
     for(let item in thisApp.dom){
       const renderDom = thisApp.dom[item];
@@ -51,7 +45,6 @@ const app = {
   initDiscover: function(){
     const thisApp = this;
     
-
     new Discover(thisApp.data);
   },
 
@@ -66,9 +59,9 @@ const app = {
     const thisApp = this;
     
 
-    thisApp.pages = document.querySelector('#pages').children;
-    thisApp.navLinks = document.querySelectorAll('.main__links a');
-    thisApp.subscribeSection = document.querySelector('.subscribe');
+    thisApp.pages = document.querySelector(select.containerOf.pages).children;
+    thisApp.navLinks = document.querySelectorAll(select.element.textLinks);
+    thisApp.subscribeSection = document.querySelector(select.containerOf.subscribe);
 
     // console.log('thisApp.pages', thisApp.pages);
     // console.log('thisApp.navLinks', thisApp.navLinks);
@@ -94,9 +87,9 @@ const app = {
         window.location.hash = '#/' + id;
 
         if(id === 'home'){
-          thisApp.subscribeSection.classList.add('active');
+          thisApp.subscribeSection.classList.add(classNames.pages);
         }else{
-          thisApp.subscribeSection.classList.remove('active');
+          thisApp.subscribeSection.classList.remove(classNames.pages);
         }
       });
     }
@@ -106,11 +99,11 @@ const app = {
     const thisApp = this;
 
     for(let page of thisApp.pages){
-      page.classList.toggle('active', page.id == pageId);
+      page.classList.toggle(classNames.pages, page.id == pageId);
     }
 
     for(let link of thisApp.navLinks){
-      link.classList.toggle('active', link.getAttribute('href') == '#' + pageId);
+      link.classList.toggle(classNames.pages, link.getAttribute('href') == '#' + pageId);
     }
   },
 
@@ -119,7 +112,7 @@ const app = {
     
     // console.log(thisApp.data);
 
-    const wrapper = document.querySelector('#home');
+    const wrapper = document.querySelector(select.containerOf.home);
 
 
     for(let song in thisApp.data.songs){

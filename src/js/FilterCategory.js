@@ -1,5 +1,6 @@
 import { utils } from './utils.js'; 
 import Song from './Songs.js'; 
+import {select, templates} from './settings.js';
 
 class FilterCategory{
   constructor(data){
@@ -22,7 +23,7 @@ class FilterCategory{
       }
     }
 
-    console.log(thisFilter.filteredCat);
+    // console.log(thisFilter.filteredCat);
     thisFilter.renderPage();
     thisFilter.filterSongs();
   }
@@ -31,10 +32,10 @@ class FilterCategory{
     const thisFilter = this;
     // console.log(thisSong.data);
     
-    const generatedHTML = Handlebars.compile(document.querySelector('#template-categories').innerHTML)(thisFilter.filteredCat);
-    console.log(generatedHTML);
+    const generatedHTML = templates.categories(thisFilter.filteredCat);
+    // console.log(generatedHTML);
     
-    thisFilter.container = document.querySelector('.categories-list');
+    thisFilter.container = document.querySelector(select.containerOf.categoriesList);
     // console.log('container', thisSong.container);
 
     thisFilter.element = utils.createDOMFromHTML(generatedHTML);
@@ -47,28 +48,27 @@ class FilterCategory{
     const thisFilter = this;
 
 
-    const categoriesList = document.querySelector('.categories-links');
-    const wrapper = document.querySelector('#home');
+    const categoriesList = document.querySelector(select.containerOf.categoriesLinks);
+    const wrapper = document.querySelector(select.containerOf.home);
 
-    console.log(categoriesList);
+    // console.log(categoriesList);
 
     categoriesList.addEventListener('click', function(event){
-      console.log(event.target);
+      // console.log(event.target);
 
       thisFilter.obj = {
         songs: [],
       };
 
       const clickedElement = event.target.nodeName;
-      console.log(clickedElement);
+      // console.log(clickedElement);
 
-      const songsContainer = wrapper.querySelector('.songs-wrapper');
-      console.log(songsContainer);
+      const songsContainer = wrapper.querySelector(select.containerOf.songs);
+      // console.log(songsContainer);
 
       songsContainer.innerHTML = '';
 
       if(clickedElement === 'A' && !event.target.classList.contains('active')){
-        console.log('działa');
 
         const activeLink = categoriesList.querySelector('.active');
 
@@ -76,25 +76,23 @@ class FilterCategory{
           activeLink.classList.remove('active');
         }
         
-        console.log('aktywny link', activeLink);
-        
         event.target.classList.add('active');
 
         const nameCategory = event.target.getAttribute('href').replace('#', '');
-        console.log('nameCategory', nameCategory);
+        // console.log('nameCategory', nameCategory);
 
         for(let song in thisFilter.data.songs){
-          console.log(thisFilter.data.songs[song]);
+          // console.log(thisFilter.data.songs[song]);
 
           for(let cat of thisFilter.data.songs[song].categories){
-            console.log(cat);
+            // console.log(cat);
 
             if(cat.toLowerCase() === nameCategory.toLowerCase()){
               thisFilter.obj.songs.push(thisFilter.data.songs[song]);
             }
           }
         }
-        console.log(thisFilter.obj);
+        // console.log(thisFilter.obj);
 
         for(let song in thisFilter.obj.songs){
           // console.log(thisApp.data.songs[song]);

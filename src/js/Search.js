@@ -1,4 +1,5 @@
 import Song from './Songs.js';
+import {select} from './settings.js';
 
 class Search{
   constructor(data){
@@ -7,8 +8,8 @@ class Search{
     thisSearch.data = data;
     // console.log(thisSearch.data);
 
-    thisSearch.wrapper = document.querySelector('#search');
-    thisSearch.songwrapper = thisSearch.wrapper.querySelector('.songs-wrapper');
+    thisSearch.wrapper = document.querySelector(select.containerOf.search);
+    thisSearch.songwrapper = thisSearch.wrapper.querySelector(select.containerOf.songs);
 
     thisSearch.initAction();
 
@@ -17,10 +18,10 @@ class Search{
   initAction(){
     const thisSearch = this;
 
-    thisSearch.button = document.querySelector('.btn-primary');
-    thisSearch.formInput = document.querySelector('.search-form input');
-    thisSearch.count = document.querySelector('.search-count');
-    thisSearch.countText = document.querySelector('.search-text');
+    thisSearch.button = document.querySelector(select.search.button);
+    thisSearch.formInput = document.querySelector(select.search.input);
+    thisSearch.count = document.querySelector(select.search.count);
+    thisSearch.countText = document.querySelector(select.search.countText);
     
 
     thisSearch.button.addEventListener('click', function(event){

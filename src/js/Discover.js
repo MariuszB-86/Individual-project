@@ -1,4 +1,5 @@
 import Song from './Songs.js';
+import {select} from './settings.js';
 
 class Discover{
   constructor(data){
@@ -7,8 +8,8 @@ class Discover{
     thisDiscover.data = data;
     // console.log('data' ,thisDiscover.data);
 
-    thisDiscover.wrapper = document.querySelector('#discover');
-    thisDiscover.songwrapper = thisDiscover.wrapper.querySelector('.songs-wrapper');
+    thisDiscover.wrapper = document.querySelector(select.containerOf.discover);
+    thisDiscover.songwrapper = thisDiscover.wrapper.querySelector(select.containerOf.songs);
 
     thisDiscover.initAction();
   }
