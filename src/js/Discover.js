@@ -8,41 +8,55 @@ class Discover{
     thisDiscover.data = data;
     // console.log('data' ,thisDiscover.data);
 
-    thisDiscover.wrapper = document.querySelector(select.containerOf.discover);
-    thisDiscover.songwrapper = thisDiscover.wrapper.querySelector(select.containerOf.songs);
-
+    thisDiscover.getElements();
     thisDiscover.initAction();
+  }
+
+  getElements(){
+    const thisDiscover = this;
+
+    thisDiscover.dom = {};
+
+    thisDiscover.dom.wrapper = document.querySelector(select.containerOf.discover);
+    thisDiscover.dom.songwrapper = thisDiscover.dom.wrapper.querySelector(select.containerOf.songs);
+    thisDiscover.dom.link = document.querySelector('[href = "#discover"]');
+
   }
 
   initAction(){
     const thisDiscover = this;
 
-    thisDiscover.link = document.querySelector('[href = "#discover"]');
-    // console.log(thisDiscover.link);
+    thisDiscover.dom.link.addEventListener('click', function(){
 
-    thisDiscover.link.addEventListener('click', function(){
-      for(let item in thisDiscover.data){
-        const songsArray = thisDiscover.data[item];
-        // console.log('tablica' ,songsArray.length);
+      thisDiscover.randomSong();
+      
+    });
+  }
 
-        const randomId = Math.round(Math.random() * (songsArray.length - 1) + 1);
+  randomSong(){
+    const thisDiscover = this;
 
-        // console.log('wylosowana liczba' ,randomId);
+    for(let item in thisDiscover.data){
+      const songsArray = thisDiscover.data[item];
+      // console.log('tablica' ,songsArray.length);
 
-        for(let item of songsArray){
-          const songId = item.id;
+      const randomId = Math.round(Math.random() * (songsArray.length - 1) + 1);
 
-          if(songId === randomId){
-            // console.log('piosenka nr', randomId);
-            thisDiscover.songwrapper.innerHTML = '';
+      // console.log('wylosowana liczba' ,randomId);
 
-            const randomSong = songsArray[songsArray.indexOf(item)];
+      for(let item of songsArray){
+        const songId = item.id;
 
-            new Song(randomId, randomSong, thisDiscover.wrapper);
-          }
+        if(songId === randomId){
+          // console.log('piosenka nr', randomId);
+          thisDiscover.dom.songwrapper.innerHTML = '';
+
+          const randomSong = songsArray[songsArray.indexOf(item)];
+
+          new Song(randomId, randomSong, thisDiscover.dom.wrapper);
         }
       }
-    });
+    }
   }
 }
 

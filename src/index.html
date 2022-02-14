@@ -41,6 +41,7 @@
                   <div class="search-form">
                     <form>
                       <label class="search-input-name">Name<input class="search-input" type="text"></label>
+                      <label class="select-category"></label>
                       <button class="btn-primary" type="submit">Search</button>
                     </form>
                   </div>
@@ -83,6 +84,15 @@
         <footer class="footer container">
             <p>All rights reserved</p>
         </footer>
+
+        <script id="template-search" type="text/x-handlebars-template">
+          <select name="category">
+            <option></option>
+            {{#each this}}
+            <option>{{this}}</option>
+            {{/each}}
+          </select>
+        </script>
 
         <script id="template-categories" type="text/x-handlebars-template">
           <ul class="categories-links">

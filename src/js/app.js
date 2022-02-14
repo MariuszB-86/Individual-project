@@ -58,7 +58,6 @@ const app = {
   initPages: function(){
     const thisApp = this;
     
-
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.element.textLinks);
     thisApp.subscribeSection = document.querySelector(select.containerOf.subscribe);
@@ -114,7 +113,6 @@ const app = {
 
     const wrapper = document.querySelector(select.containerOf.home);
 
-
     for(let song in thisApp.data.songs){
       // console.log(thisApp.data.songs[song]);
       new Song(thisApp.data.songs[song].id, thisApp.data.songs[song], wrapper);
@@ -124,7 +122,6 @@ const app = {
   initData: function(){
     const thisApp = this;
     
-
     thisApp.data = {};
 
     const url = '//localhost:3131' + '/' + 'songs';
@@ -138,11 +135,9 @@ const app = {
       
         thisApp.data.songs = parsedResponse;
         // console.log('thisApp.data.songs', thisApp.data.songs);
-        
+        thisApp.initSearch();
         thisApp.initFilterCategory();
         thisApp.initSongs();
-        
-        
       });
   },
 
@@ -151,16 +146,12 @@ const app = {
 
     // console.log('*** App starting ***');
     // console.log('thisApp:', thisApp);
-
     
+
     thisApp.initData();
     thisApp.initPages();
-    thisApp.initSearch();
     thisApp.initDiscover();
     thisApp.initRenderText();
-    
-    
-    
   },
 };
 

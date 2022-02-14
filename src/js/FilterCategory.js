@@ -2,12 +2,21 @@ import { utils } from './utils.js';
 import Song from './Songs.js'; 
 import {select, templates} from './settings.js';
 
-class FilterCategory{
+class FilterCategory {
   constructor(data){
     const thisFilter = this;
 
     thisFilter.data = data;
     // console.log(thisFilter.data);
+ 
+    thisFilter.prepareFilteredData();
+    thisFilter.renderPage();
+    thisFilter.getElements();
+    thisFilter.initAction();
+  }
+
+  prepareFilteredData(){
+    const thisFilter = this;
 
     thisFilter.filteredCat = [];
 
@@ -22,91 +31,97 @@ class FilterCategory{
         }
       }
     }
-
     // console.log(thisFilter.filteredCat);
-    thisFilter.renderPage();
-    thisFilter.filterSongs();
+  }
+
+  getElements(){
+    const thisFilter = this;
+
+    thisFilter.dom = {};
+
+    thisFilter.dom.categoriesList = document.querySelector(select.containerOf.categoriesLinks);
+    thisFilter.dom.wrapper = document.querySelector(select.containerOf.home);
   }
 
   renderPage(){
     const thisFilter = this;
-    // console.log(thisSong.data);
+    // console.log(thisFilter.data);
     
     const generatedHTML = templates.categories(thisFilter.filteredCat);
     // console.log(generatedHTML);
     
     thisFilter.container = document.querySelector(select.containerOf.categoriesList);
-    // console.log('container', thisSong.container);
+    // console.log('container', thisFilter.container);
 
     thisFilter.element = utils.createDOMFromHTML(generatedHTML);
-    // // console.log('song.element', thisSong.element);
+    // // console.log(thisFilter.element);
 
     thisFilter.container.appendChild(thisFilter.element);
   }
 
-  filterSongs(){
+  initAction(){
     const thisFilter = this;
 
+    thisFilter.dom.categoriesList.addEventListener('click', function(event){
 
-    const categoriesList = document.querySelector(select.containerOf.categoriesLinks);
-    const wrapper = document.querySelector(select.containerOf.home);
+      thisFilter.filterSongs(event);
+  
+    });
+  }
 
-    // console.log(categoriesList);
+  filterSongs(event){
+    const thisFilter = this;
 
-    categoriesList.addEventListener('click', function(event){
-      // console.log(event.target);
+    thisFilter.obj = {
+      songs: [],
+    };
 
-      thisFilter.obj = {
-        songs: [],
-      };
+    const clickedElement = event.target.nodeName;
+    // console.log(clickedElement);
 
-      const clickedElement = event.target.nodeName;
-      // console.log(clickedElement);
+    const songsContainer = thisFilter.dom.wrapper.querySelector(select.containerOf.songs);
+    // console.log(songsContainer);
 
-      const songsContainer = wrapper.querySelector(select.containerOf.songs);
-      // console.log(songsContainer);
+    songsContainer.innerHTML = '';
 
-      songsContainer.innerHTML = '';
+    if(clickedElement === 'A' && !event.target.classList.contains('active')){
 
-      if(clickedElement === 'A' && !event.target.classList.contains('active')){
+      const activeLink = thisFilter.dom.categoriesList.querySelector('.active');
 
-        const activeLink = categoriesList.querySelector('.active');
+      if(activeLink){
+        activeLink.classList.remove('active');
+      }
+      
+      event.target.classList.add('active');
 
-        if(activeLink){
-          activeLink.classList.remove('active');
-        }
-        
-        event.target.classList.add('active');
+      const nameCategory = event.target.getAttribute('href').replace('#', '');
+      // console.log('nameCategory', nameCategory);
 
-        const nameCategory = event.target.getAttribute('href').replace('#', '');
-        // console.log('nameCategory', nameCategory);
+      for(let song in thisFilter.data.songs){
+        // console.log(thisFilter.data.songs[song]);
 
-        for(let song in thisFilter.data.songs){
-          // console.log(thisFilter.data.songs[song]);
+        for(let cat of thisFilter.data.songs[song].categories){
+          // console.log(cat);
 
-          for(let cat of thisFilter.data.songs[song].categories){
-            // console.log(cat);
-
-            if(cat.toLowerCase() === nameCategory.toLowerCase()){
-              thisFilter.obj.songs.push(thisFilter.data.songs[song]);
-            }
+          if(cat.toLowerCase() === nameCategory.toLowerCase()){
+            thisFilter.obj.songs.push(thisFilter.data.songs[song]);
           }
         }
-        // console.log(thisFilter.obj);
-
-        for(let song in thisFilter.obj.songs){
-          // console.log(thisApp.data.songs[song]);
-          new Song(thisFilter.obj.songs[song].id, thisFilter.obj.songs[song], wrapper);
-        }
-      }else{
-        event.target.classList.remove('active');
-      
-        for(let song in thisFilter.data.songs){
-          // console.log(thisApp.data.songs[song]);
-          new Song(thisFilter.data.songs[song].id, thisFilter.data.songs[song], wrapper);
-        }
       }
-    });
+      // console.log(thisFilter.obj);
+
+      for(let song in thisFilter.obj.songs){
+        // console.log(thisApp.data.songs[song]);
+        new Song(thisFilter.obj.songs[song].id, thisFilter.obj.songs[song], thisFilter.dom.wrapper);
+      }
+    }else{
+      event.target.classList.remove('active');
+    
+      for(let song in thisFilter.data.songs){
+        // console.log(thisApp.data.songs[song]);
+        new Song(thisFilter.data.songs[song].id, thisFilter.data.songs[song], thisFilter.dom.wrapper);
+      }
+    }
   }
 }
 

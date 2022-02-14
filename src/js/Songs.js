@@ -13,7 +13,9 @@ class Song{
     thisSong.data = data;
     // console.log('thisSong.id', thisSong.id);
 
-    thisSong.wrapper = wrapper;
+    thisSong.dom = {};
+    
+    thisSong.dom.wrapper = wrapper;
 
     thisSong.renderPage();
     thisSong.initPlayer();
@@ -27,7 +29,7 @@ class Song{
     const generatedHTML = templates.songs(thisSong.data);
     // console.log(generatedHTML);
     
-    thisSong.container = thisSong.wrapper.querySelector(select.containerOf.songs);
+    thisSong.container = thisSong.dom.wrapper.querySelector(select.containerOf.songs);
     // console.log('container', thisSong.container);
 
     thisSong.element = utils.createDOMFromHTML(generatedHTML);
