@@ -1,6 +1,6 @@
-import { utils } from './utils.js'; 
-import RenderText from './RenderText.js';
-import {select, templates} from './settings.js';
+import { utils } from '../utils.js'; 
+import RenderText from '../components/RenderText.js';
+import {select, templates} from '../settings.js';
 
 class Song{
   constructor(id, data, wrapper){

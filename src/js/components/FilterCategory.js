@@ -1,6 +1,6 @@
-import { utils } from './utils.js'; 
-import Song from './Songs.js'; 
-import {select, templates} from './settings.js';
+import { utils } from '../utils.js'; 
+import Song from '../components/Songs.js'; 
+import {select, templates} from '../settings.js';
 
 class FilterCategory {
   constructor(data){

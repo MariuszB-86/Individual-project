@@ -1,6 +1,6 @@
-import Song from './Songs.js';
-import {select} from './settings.js';
-import { utils } from './utils.js'; 
+import Song from '../components/Songs.js';
+import {select, templates} from '../settings.js';
+import { utils } from '../utils.js'; 
 
 class Search{
   constructor(data){
@@ -26,7 +26,7 @@ class Search{
     thisSearch.dom.formInput = document.querySelector(select.search.input);
     thisSearch.dom.count = document.querySelector(select.search.count);
     thisSearch.dom.countText = document.querySelector(select.search.countText);
-    thisSearch.dom.select = document.querySelector('[name = "category"]');
+    thisSearch.dom.select = document.querySelector(select.element.searchSelect);
   }
 
   initAction(){
@@ -48,8 +48,6 @@ class Search{
       songs: [],
       author: []
     };
-
-    // thisSearch.dom.songwrapper.innerHTML = '';
 
     for(let item in thisSearch.data){
       const songsArray = thisSearch.data[item];
@@ -122,8 +120,6 @@ class Search{
       songs: [],
     };
 
-    // thisSearch.dom.songwrapper.innerHTML = '';
-
     for(let item in thisSearch.data){
       const songsArray = thisSearch.data[item];
       // console.log(songsArray);
@@ -147,10 +143,10 @@ class Search{
   initWidget(){
     const thisSearch = this;
 
-    const generatedHTML = Handlebars.compile(document.querySelector('#template-search').innerHTML)(thisSearch.filteredCat);
+    const generatedHTML = templates.searchSelect(thisSearch.filteredCat);
     // console.log(generatedHTML);
     
-    thisSearch.container = document.querySelector('.select-category');
+    thisSearch.container = document.querySelector(select.containerOf.searchSelect);
     // console.log('container', thisSearch.container);
 
     thisSearch.element = utils.createDOMFromHTML(generatedHTML);
@@ -192,7 +188,6 @@ class Search{
       for(let song in thisSearch.data.songs){
         thisSearch.resultArray.push(thisSearch.data.songs[song]);
       }
-
     }
 
     for(let song of thisSearch.resultArray){
@@ -204,9 +199,7 @@ class Search{
     thisSearch.dom.count.innerHTML = count;
 
     thisSearch.dom.countText.classList.add('active');
-
   }
-  
 }
 
 export default Search;

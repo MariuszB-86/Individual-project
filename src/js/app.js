@@ -1,9 +1,9 @@
-import Search from './Search.js';
-import Song from './Songs.js'; 
-import Discover from './Discover.js'; 
-import RenderText from './RenderText.js'; 
-import FilterCategory from './FilterCategory.js'; 
-import {classNames, select} from './settings.js';
+import Search from './components/Search.js';
+import Song from './components/Songs.js'; 
+import Discover from './components/Discover.js'; 
+import RenderText from './components/RenderText.js'; 
+import FilterCategory from './components/FilterCategory.js'; 
+import {classNames, select, settings} from './settings.js';
 
 const app = {
   initFilterCategory: function(){
@@ -124,7 +124,7 @@ const app = {
     
     thisApp.data = {};
 
-    const url = '//localhost:3131' + '/' + 'songs';
+    const url = '//' + settings.url + '/' + settings.songs;
   
     fetch(url)
       .then(function(rawResponse){
@@ -147,7 +147,6 @@ const app = {
     // console.log('*** App starting ***');
     // console.log('thisApp:', thisApp);
     
-
     thisApp.initData();
     thisApp.initPages();
     thisApp.initDiscover();

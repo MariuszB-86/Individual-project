@@ -14,6 +14,11 @@
   font-family: $font-two;
 }
 
+form{
+  display: flex;
+  flex-direction: row;
+}
+
 .search-input-name{
   font-size: 20px;
   font-family: $font-two;
@@ -52,4 +57,46 @@
 
 .active{
   display: block;
+}
+
+.select-category{
+  color: white;
+  font-size: 20px;
+  font-family: $font-two;
+  color: $color-three;
+  letter-spacing: 4px;
+  display: flex;
+  align-items: center;
+}
+
+select, option{
+  font-family: $font-two;
+  color: black;
+  margin: 0 15px;
+  width: 250px;
+  height: 45px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media (min-width: 360px) and (max-width: 1280px){
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-input{
+    margin: 10px 45px;
+    width: 40vw;
+    
+  }
+
+  select, option{
+    width: 40vw;
+  }
+
+  .btn-primary{
+    margin: 10px auto;
+  }
 }

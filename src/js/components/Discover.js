@@ -1,5 +1,5 @@
-import Song from './Songs.js';
-import {select} from './settings.js';
+import Song from '../components/Songs.js';
+import {select} from '../settings.js';
 
 class Discover{
   constructor(data){

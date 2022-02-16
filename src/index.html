@@ -41,7 +41,7 @@
                   <div class="search-form">
                     <form>
                       <label class="search-input-name">Name<input class="search-input" type="text"></label>
-                      <label class="select-category"></label>
+                      <label class="select-category">Category</label>
                       <button class="btn-primary" type="submit">Search</button>
                     </form>
                   </div>
@@ -86,12 +86,14 @@
         </footer>
 
         <script id="template-search" type="text/x-handlebars-template">
-          <select name="category">
-            <option></option>
-            {{#each this}}
-            <option>{{this}}</option>
-            {{/each}}
-          </select>
+          <div class="category">
+            <select name="category">
+              <option></option>
+              {{#each this}}
+              <option>{{this}}</option>
+              {{/each}}
+            </select>
+          </div>
         </script>
 
         <script id="template-categories" type="text/x-handlebars-template">

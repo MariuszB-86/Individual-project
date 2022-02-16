@@ -2,6 +2,7 @@ export const select = {
   templateOf: {
     songs: '#template-songs',
     categories: '#template-categories',
+    search: '#template-search',
   },
   containerOf: {
     songs: '.songs-wrapper',
@@ -13,6 +14,7 @@ export const select = {
     subscribe: '.subscribe',
     categoriesList: '.categories-list',
     categoriesLinks: '.categories-links',
+    searchSelect: '.select-category',
   },
   element: {
     splashTitle: '.splash__title',
@@ -23,6 +25,7 @@ export const select = {
     subscribeButton: '.btn-secondary',
     searchTitle: '.search-title',
     searchButton: '.btn-primary',
+    searchSelect: '[name = "category"]',
     discoverTitle: '.discover-title'
   },
   search: {
@@ -39,7 +42,13 @@ export const classNames = {
   pages: 'active',
 };
 
+export const settings = {
+  url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
+  songs: 'songs',
+};
+
 export const templates = {
   songs: Handlebars.compile(document.querySelector(select.templateOf.songs).innerHTML),
   categories: Handlebars.compile(document.querySelector(select.templateOf.categories).innerHTML),
+  searchSelect: Handlebars.compile(document.querySelector(select.templateOf.search).innerHTML),
 };
